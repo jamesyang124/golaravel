@@ -6,6 +6,7 @@ BINARY_NAME=go-laravel
 build:
 	@go mod vendor
 	@echo "Building Celeritas..."
+#	go run .
 	@go build -o ./${BINARY_NAME} .
 	@echo "Celeritas built!"
 
@@ -30,6 +31,7 @@ cleanApp:
 	@-rm -r "./tmp"
 	@-rm -r "./logs"
 	@-rm -r "./middleware"
+#	@-rm -r "./.env"
 	@echo "Cleaned!"
 
 test:

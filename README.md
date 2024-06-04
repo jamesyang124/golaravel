@@ -1,3 +1,7 @@
+# golaravel
+
+learning purpose only.
+
 ## Section 8 
 
 #### celeritas & go mod
@@ -42,3 +46,14 @@ in order to in-sync go mod vendor every time, crate make file for it.
 
 https://hackmd.io/@sysprog/SySTMXPvl
 
+## Section 11
+
+1. defer function handling, note defer arguments vs defer function call
+2. get mod by `go get mod_name` ex: `go get github.com/joho/godotenv`
+3. remove mod by `go get mod_name@none`
+4. update go version management tool by `https://github.com/moovweb/gvm`
+
+```sh
+gvm install go1.20 -B
+gvm install go1.22.4 -B
+```
