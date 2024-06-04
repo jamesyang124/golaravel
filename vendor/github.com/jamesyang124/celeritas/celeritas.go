@@ -1,5 +1,11 @@
 package celeritas
 
+import (
+	"fmt"
+
+	"github.com/joho/godotenv"
+)
+
 const version = "1.0.0"
 
 type Celeritas struct {
@@ -18,6 +24,16 @@ func (c *Celeritas) New(rootPath string) error {
 		return err
 	}
 
+	if err := c.checkDotEnv(rootPath); err != nil {
+		return err
+	}
+
+	// read dotenv by:
+	// https://github.com/joho/godotenv
+	if err := godotenv.Load(rootPath + "/.env"); err != nil {
+		return err
+	}
+
 	return nil
 }
 
@@ -28,6 +44,16 @@ func (c *Celeritas) Init(initPaths initPaths) error {
 		if err := c.CreateDirIfNotExisted(rp + "/" + path); err != nil {
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (c *Celeritas) checkDotEnv(rootPath string) error {
+	err := c.CreateFileIfNotExisted(fmt.Sprintf("%s/.env", rootPath))
+
+	if err != nil {
+		return err
 	}
 
 	return nil
