@@ -2,8 +2,9 @@ BINARY_NAME=go-laravel
 
 # @ not show command
 # - conitinue next command if failed
+# build: cleanApp clean -> run cleanApp then clean then build steps
 
-build:
+build: cleanApp
 	@go mod vendor
 	@echo "Building Celeritas..."
 #	go run .

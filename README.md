@@ -2,9 +2,20 @@
 
 learning purpose only.
 
+- section 13 - add config from env
 - section 12 - add logger and parse env
 - section 11 - add dot env dep.
 - section 08 - add folder generator for code base
+
+## Section 13
+
+1. pass by value or pointer?
+
+https://stackoverflow.com/questions/23542989/pointers-vs-values-in-parameters-and-return-values
+
+2. pointers pro & cons
+
+https://medium.com/@briankworld/in-go-a-pointer-is-a-variable-that-stores-the-memory-address-of-another-variable-7584ac788041
 
 ## Section 12
 
@@ -22,7 +33,6 @@ learning purpose only.
 gvm install go1.20 -B
 gvm install go1.22.4 -B
 ```
-
 
 ## Section 8 
 
