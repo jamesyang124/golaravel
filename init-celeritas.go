@@ -27,7 +27,9 @@ func initApplication() *application {
 	}
 
 	cel.AppName = "celeritasApp"
-	cel.Debug = true
+
+	// ensure info logger is set as well
+	cel.InfoLog.Println("debug mode is set by env:", cel.Debug)
 
 	app := &application{
 		App: cel,

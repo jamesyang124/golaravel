@@ -2,8 +2,14 @@
 
 learning purpose only.
 
+- section 12 - add logger and parse env
 - section 11 - add dot env dep.
 - section 08 - add folder generator for code base
+
+## Section 12
+
+1. add logger, `int` flag for properties
+2. add `strconv` for parsing env for dotenv 
 
 ## Section 11
 
