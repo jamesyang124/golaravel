@@ -1,20 +1,21 @@
-BINARY_NAME=go-laravel
+BINARY_NAME=golaravel
 
 # @ not show command
 # - conitinue next command if failed
 # build: cleanApp clean -> run cleanApp then clean then build steps
 
-build: cleanApp
+build: #cleanApp
+	@go mod tidy
 	@go mod vendor
 	@echo "Building Celeritas..."
-#	go run .
 	@go build -o ./${BINARY_NAME} .
 	@echo "Celeritas built!"
 
 run: build
 	@echo "Starting Celeritas..."
-	@./${BINARY_NAME} &
-	@echo "Celeritas started!"
+	@./${BINARY_NAME}
+#	@./${BINARY_NAME} &
+#	@echo "Celeritas started!"
 
 clean:
 	@echo "Cleaning..."
