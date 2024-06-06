@@ -57,7 +57,12 @@ func (c *Celeritas) New(rootPath string) error {
 	c.Debug, _ = strconv.ParseBool(os.Getenv("DEBUG"))
 	c.Version = version
 	c.RootPath = rootPath
-	c.Routes = c.routes().(*chi.Mux)
+
+	if routes, ok := c.routes().(*chi.Mux); ok {
+		c.Routes = routes
+	} else {
+		c.ErrorLog.Fatal("Celeritas.routes() cannot type assertion to *chi.Mux")
+	}
 
 	c.config = config{
 		port:     os.Getenv("PORT"),
