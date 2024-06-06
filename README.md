@@ -2,10 +2,17 @@
 
 learning purpose only.
 
+- section 14 - add chi router, init server config and mount handler for it
 - section 13 - add config from env
 - section 12 - add logger and parse env
 - section 11 - add dot env dep.
 - section 08 - add folder generator for code base
+
+## Section 14
+
+1. run `go mod tidy` to add back missing module if `go get` not import new pacakage.
+2. `F12` to see document.
+3. review `/celeritas/routes.go` for `chi` router handler impl.
 
 ## Section 13
 
