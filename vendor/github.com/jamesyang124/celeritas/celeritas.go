@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"github.com/go-chi/chi/v5"
+	"github.com/jamesyang124/celeritas/render"
 	"github.com/joho/godotenv"
 )
 
@@ -22,6 +23,7 @@ type Celeritas struct {
 	InfoLog  *log.Logger
 	Routes   *chi.Mux
 	RootPath string
+	Render   *render.Render
 	config   config // config does not expose public fields, Celeritas should follow its accessibility
 }
 
@@ -57,12 +59,19 @@ func (c *Celeritas) New(rootPath string) error {
 	c.Debug, _ = strconv.ParseBool(os.Getenv("DEBUG"))
 	c.Version = version
 	c.RootPath = rootPath
-	c.Routes = c.routes().(*chi.Mux)
+
+	if routes, ok := c.routes().(*chi.Mux); ok {
+		c.Routes = routes
+	} else {
+		c.ErrorLog.Fatal("Celeritas.routes() cannot type assertion to *chi.Mux")
+	}
 
 	c.config = config{
 		port:     os.Getenv("PORT"),
 		renderer: os.Getenv("RENDERER"),
 	}
+
+	c.Render = c.createRender(c)
 
 	return nil
 }
@@ -115,4 +124,15 @@ func (c *Celeritas) startLoggers() (*log.Logger, *log.Logger) {
 	errorLog = log.New(os.Stdout, "ERROR\t", log.Ldate|log.Ltime|log.Lshortfile)
 
 	return infoLog, errorLog
+}
+
+// put reciever type as function argument may benefit its test stubbing, or some readability reason
+func (c *Celeritas) createRender(cel *Celeritas) *render.Render {
+	myRender := render.Render{
+		Renderer: cel.config.renderer,
+		RootPath: cel.RootPath,
+		Port:     cel.config.port,
+	}
+
+	return &myRender
 }

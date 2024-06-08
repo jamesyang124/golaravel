@@ -2,11 +2,17 @@
 
 learning purpose only.
 
+- section 15 - add render for go default template engine
 - section 14 - add chi router, init server config and mount handler for it
 - section 13 - add config from env
 - section 12 - add logger and parse env
 - section 11 - add dot env dep.
 - section 08 - add folder generator for code base
+
+## Section 15
+
+1. check `template.text.execute` how `reflect.ValueOf` for pointers
+2. review method reciever as function argument for reasons.
 
 ## Section 14
 
