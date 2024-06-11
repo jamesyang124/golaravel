@@ -1,7 +1,6 @@
 package celeritas
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/go-chi/chi/middleware"
@@ -17,10 +16,6 @@ func (c *Celeritas) routes() http.Handler {
 	}
 	mux.Use(middleware.Recoverer) // recover from panic, respond 500 instead
 	mux.Use(middleware.Heartbeat("/health"))
-
-	mux.Get("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintln(w, "Welcome to celeritas")
-	})
 
 	return mux
 }

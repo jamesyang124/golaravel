@@ -2,12 +2,20 @@
 
 learning purpose only.
 
+- section 17 - fix os.Mkdir file mode value err,
 - section 15 - add render for go default template engine
 - section 14 - add chi router, init server config and mount handler for it
 - section 13 - add config from env
 - section 12 - add logger and parse env
 - section 11 - add dot env dep.
 - section 08 - add folder generator for code base
+
+## Section 17
+
+- fix os.Mkdir wrong file mode value err
+- move actual HTTP routes definition to golaravel's `routes.go` file instead
+- `http.StripPrefix` for strip reuqest url's path prefix to next handler
+- expose `handlers` to `app`, and with handler function
 
 ## Section 15
 

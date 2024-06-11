@@ -5,7 +5,7 @@ import (
 	"os"
 )
 
-const DIR_MODE = 755
+const DIR_MODE = 0755
 
 func (c *Celeritas) CreateDirIfNotExisted(path string) error {
 	if _, err := os.Stat(path); os.IsNotExist(err) {
