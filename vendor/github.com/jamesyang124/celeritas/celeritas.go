@@ -71,7 +71,7 @@ func (c *Celeritas) New(rootPath string) error {
 		renderer: os.Getenv("RENDERER"),
 	}
 
-	c.Render = c.createRender(c)
+	c.createRender()
 
 	return nil
 }
@@ -127,12 +127,13 @@ func (c *Celeritas) startLoggers() (*log.Logger, *log.Logger) {
 }
 
 // put reciever type as function argument may benefit its test stubbing, or some readability reason
-func (c *Celeritas) createRender(cel *Celeritas) *render.Render {
+// updated: remove above impl. finally, unless for above reason..
+func (c *Celeritas) createRender() {
 	myRender := render.Render{
-		Renderer: cel.config.renderer,
-		RootPath: cel.RootPath,
-		Port:     cel.config.port,
+		Renderer: c.config.renderer,
+		RootPath: c.RootPath,
+		Port:     c.config.port,
 	}
 
-	return &myRender
+	c.Render = &myRender
 }

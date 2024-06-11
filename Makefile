@@ -25,7 +25,7 @@ clean:
 
 cleanApp:
 	@echo "Cleaning application scaffold files..."
-	@-rm -r "./handler"
+#	@-rm -r "./handler"
 	@-rm -r "./migrations"
 #	@-rm -r "./views"
 	@-rm -r "./data"
