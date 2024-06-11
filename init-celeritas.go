@@ -1,6 +1,7 @@
 package main
 
 import (
+	"golaravel/handler"
 	"log"
 	"os"
 
@@ -8,7 +9,8 @@ import (
 )
 
 type application struct {
-	App *celeritas.Celeritas
+	App      *celeritas.Celeritas
+	Handlers *handler.Handlers
 }
 
 func initApplication() *application {
@@ -31,9 +33,16 @@ func initApplication() *application {
 	// ensure info logger is set as well
 	cel.InfoLog.Println("debug mode is set by env:", cel.Debug)
 
-	app := &application{
+	handlers := &handler.Handlers{
 		App: cel,
 	}
+
+	app := &application{
+		App:      cel,
+		Handlers: handlers,
+	}
+
+	app.App.Routes = app.routes()
 
 	return app
 }
