@@ -2,6 +2,7 @@
 
 learning purpose only.
 
+- secttio 23 - test for render engine/template
 - secttio 19 - add jet template engine
 - section 17 - fix os.Mkdir file mode value err
 - section 15 - add render for go default template engine
@@ -10,6 +11,12 @@ learning purpose only.
 - section 12 - add logger and parse env
 - section 11 - add dot env dep.
 - section 08 - add folder generator for code base
+
+## Section 23
+
+- test guide - https://ieftimov.com/posts/testing-in-go-go-test/#:~:text=If%20you%20remember%20anything%20from,it's%20available%20on%20your%20machine.
+- review coverage report to see how to tackle test coverage for source code
+- add `testify/assertion` for testing
 
 ## Section 19
 

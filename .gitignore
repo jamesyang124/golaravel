@@ -1,2 +1,4 @@
 golaravel
 .env
+vendor/github.com/jamesyang124/**/coverage.*
+vendor/github.com/jamesyang124/**/Makefile
