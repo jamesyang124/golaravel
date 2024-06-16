@@ -16,3 +16,17 @@ func (h *Handlers) Home(w http.ResponseWriter, r *http.Request) {
 		h.App.ErrorLog.Println("err rendering:", err)
 	}
 }
+
+func (h *Handlers) GoTemplatePage(w http.ResponseWriter, r *http.Request) {
+	err := h.App.Render.GoPage(w, r, "go-template", nil)
+	if err != nil {
+		h.App.ErrorLog.Println("err rendering:", err)
+	}
+}
+
+func (h *Handlers) JetTemplatePage(w http.ResponseWriter, r *http.Request) {
+	err := h.App.Render.JetPage(w, r, "jet-template", nil, nil)
+	if err != nil {
+		h.App.ErrorLog.Println("err rendering:", err)
+	}
+}
