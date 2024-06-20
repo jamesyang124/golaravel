@@ -30,3 +30,15 @@ func (h *Handlers) JetTemplatePage(w http.ResponseWriter, r *http.Request) {
 		h.App.ErrorLog.Println("err rendering:", err)
 	}
 }
+
+func (h *Handlers) SessionTest(w http.ResponseWriter, r *http.Request) {
+	data := "foo"
+
+	// store it to cookie by default session type
+	h.App.Session.Put(r.Context(), "bar", data)
+
+	err := h.App.Render.JetPage(w, r, "sessions", nil, nil)
+	if err != nil {
+		h.App.ErrorLog.Println("err rendering:", err)
+	}
+}

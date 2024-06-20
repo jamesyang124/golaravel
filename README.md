@@ -2,6 +2,8 @@
 
 learning purpose only.
 
+- section 28 - update session with cookie session type
+- section 25 - add scs session, hook with middleware
 - section 24 - module test data as input struct
 - section 23 - test for render engine/template
 - section 19 - add jet template engine
@@ -12,6 +14,12 @@ learning purpose only.
 - section 12 - add logger and parse env
 - section 11 - add dot env dep.
 - section 08 - add folder generator for code base
+
+## Section 25-27
+
+- use `https://github.com/alexedwards/scs` for session mgmt
+- hook cookie config from env
+- prepare middleware function for handling scs session load and save for each handler iteration
 
 ## Section 23-24
 
