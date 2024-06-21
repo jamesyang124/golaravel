@@ -3,6 +3,7 @@ package handler
 import (
 	"net/http"
 
+	"github.com/CloudyKit/jet/v6"
 	"github.com/jamesyang124/celeritas"
 )
 
@@ -35,9 +36,14 @@ func (h *Handlers) SessionTest(w http.ResponseWriter, r *http.Request) {
 	data := "foo"
 
 	// store it to cookie by default session type
-	h.App.Session.Put(r.Context(), "bar", data)
+	h.App.Session.Put(r.Context(), "foo", data)
 
-	err := h.App.Render.JetPage(w, r, "sessions", nil, nil)
+	value := h.App.Session.GetString(r.Context(), "foo")
+
+	vars := make(jet.VarMap)
+	vars.Set("foo", value)
+
+	err := h.App.Render.JetPage(w, r, "sessions", vars, nil)
 	if err != nil {
 		h.App.ErrorLog.Println("err rendering:", err)
 	}
