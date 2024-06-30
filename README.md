@@ -2,6 +2,7 @@
 
 learning purpose only.
 
+- section 34 - pick `pgx` as postgres connection client lib
 - section 28 - update session with cookie session type
 - section 25 - add scs session, hook with middleware
 - section 24 - module test data as input struct
@@ -14,6 +15,12 @@ learning purpose only.
 - section 12 - add logger and parse env
 - section 11 - add dot env dep.
 - section 08 - add folder generator for code base
+
+## Section 28-34
+
+- docker composed for local run time
+- include dbs
+- pick pgx for postgres client
 
 ## Section 25-27
 
