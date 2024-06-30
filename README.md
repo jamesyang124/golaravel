@@ -2,7 +2,12 @@
 
 learning purpose only.
 
-- secttio 19 - add jet template engine
+- section 34 - pick `pgx` as postgres connection client lib
+- section 28 - update session with cookie session type
+- section 25 - add scs session, hook with middleware
+- section 24 - module test data as input struct
+- section 23 - test for render engine/template
+- section 19 - add jet template engine
 - section 17 - fix os.Mkdir file mode value err
 - section 15 - add render for go default template engine
 - section 14 - add chi router, init server config and mount handler for it
@@ -10,6 +15,25 @@ learning purpose only.
 - section 12 - add logger and parse env
 - section 11 - add dot env dep.
 - section 08 - add folder generator for code base
+
+## Section 28-34
+
+- docker composed for local run time
+- include dbs
+- pick pgx for postgres client
+
+## Section 25-27
+
+- use `https://github.com/alexedwards/scs` for session mgmt
+- hook cookie config from env
+- prepare middleware function for handling scs session load and save for each handler iteration
+
+## Section 23-24
+
+- test guide - https://ieftimov.com/posts/testing-in-go-go-test/#:~:text=If%20you%20remember%20anything%20from,it's%20available%20on%20your%20machine.
+- review coverage report to see how to tackle test coverage for source code
+- add `testify/assertion` for testing
+- module test data as input struct, this abstraction may force its flexibility is sticked in same test unit. 
 
 ## Section 19
 

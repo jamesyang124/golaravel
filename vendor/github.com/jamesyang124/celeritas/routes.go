@@ -15,6 +15,8 @@ func (c *Celeritas) routes() http.Handler {
 		mux.Use(middleware.Logger)
 	}
 	mux.Use(middleware.Recoverer) // recover from panic, respond 500 instead
+	mux.Use(c.SessionLoad)
+
 	mux.Use(middleware.Heartbeat("/health"))
 
 	return mux

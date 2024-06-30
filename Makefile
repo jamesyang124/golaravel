@@ -49,3 +49,12 @@ stop:
 	@echo "Stopped Celeritas!"
 
 restart: stop start
+
+startCompose:
+	docker-compose up -d
+
+stopCompose:
+	docker-compose stop
+	docker-compose rm -f
+#	docker rm $(docker ps -a | awk '{print $1}' | tail -n +2)
+	docker network rm golaravel_default

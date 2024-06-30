@@ -1,6 +1,7 @@
 package render
 
 import (
+	"errors"
 	"fmt"
 	"html/template"
 	"log"
@@ -37,8 +38,10 @@ func (c *Render) Page(w http.ResponseWriter, r *http.Request, view string, jetVa
 		return c.JetPage(w, r, view, jetVariables, data)
 	case "go":
 		return c.GoPage(w, r, view, data)
+	default:
+		// directly jump out swtich-case conditions
 	}
-	return nil
+	return errors.New("no rendering engine specified")
 }
 
 // render by default go template engine
