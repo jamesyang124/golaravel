@@ -12,6 +12,9 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
       POSTGRES_DB: celeritas
+    # manually chown 1000:1000 -R in host for ./db-data/postgres/
+    # 1000 is app runner id
+    user: 1000:1000
     volumes:
       - ./db-data/postgres/:/var/lib/postgresql/data/
 

@@ -16,6 +16,9 @@ learning purpose only.
 - section 11 - add dot env dep.
 - section 08 - add folder generator for code base
 
+## Section 35
+- `chown -R 1000:1000 ./db-data/postgress`, 1000 is host's user id, switch user and group for docker-compose postgres service.
+
 ## Section 28-34
 
 - docker composed for local run time
@@ -130,5 +133,7 @@ go mod vendor
 #### Makefile
 
 in order to in-sync go mod vendor every time, crate make file for it.
+
+- `make run`, `make build`
 
 https://hackmd.io/@sysprog/SySTMXPvl
