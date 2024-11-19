@@ -29,6 +29,7 @@ type Celeritas struct {
 	Render   *render.Render
 	JetViews *jet.Set
 	Session  *scs.SessionManager
+	DB       Database
 	config   config // config does not expose public fields, Celeritas should follow its accessibility
 }
 
@@ -37,6 +38,7 @@ type config struct {
 	port        string
 	renderer    string
 	cookie      cookieConfig
+	database    databaseConfig
 	sessionType string
 }
 
@@ -62,6 +64,19 @@ func (c *Celeritas) New(rootPath string) error {
 
 	// create log
 	c.InfoLog, c.ErrorLog = c.startLoggers()
+
+	// connect to db
+	if os.Getenv("DATABASE_TYPE") != "" {
+		db, err := c.OpenDB(os.Getenv("DATABASE_TYPE"), c.BuildDSN())
+		if err != nil {
+			c.ErrorLog.Println(err)
+			os.Exit(1)
+		}
+		c.DB = Database{
+			DataType: os.Getenv("DATABASE_TYPE"),
+			Pool:     db,
+		}
+	}
 
 	// don't care error if debug env not found, treat it as default mode instead
 	c.Debug, _ = strconv.ParseBool(os.Getenv("DEBUG"))
@@ -169,4 +184,27 @@ func (c *Celeritas) createRender() {
 	}
 
 	c.Render = &myRender
+}
+
+func (c *Celeritas) BuildDSN() string {
+	var dsn string
+
+	switch os.Getenv("DATABASE_TYPE") {
+	case "postgres", "postgresql":
+		dsn = fmt.Sprintf("host=%s port=%s user=%s dbname=%s sslmode=%s timezone=UTC connect_timeout=5",
+			os.Getenv("DATABASE_HOST"),
+			os.Getenv("DATABASE_PORT"),
+			os.Getenv("DATABASE_USER"),
+			os.Getenv("DATABASE_NAME"),
+			os.Getenv("DATABASE_SSL_MODE"),
+		)
+
+		if os.Getenv("DATABASE_PASS") != "" {
+			dsn = fmt.Sprintf("%s password=%s", dsn, os.Getenv("DATABASE_PASS"))
+		}
+	default:
+
+	}
+
+	return dsn
 }
