@@ -17,7 +17,7 @@ learning purpose only.
 - section 08 - add folder generator for code base
 
 ## Section 35
-- `chown -R 1000:1000 ./db-data/postgress`, 1000 is host's user id, switch user and group for docker-compose postgres service.
+- `chown -R 1000:1000 ./db-data/postgress`, 1000 is current host's user id, switch user and group for docker-compose postgres service. And add `user: 1000:1000` command in docker-compose file
 
 ## Section 28-34
 
