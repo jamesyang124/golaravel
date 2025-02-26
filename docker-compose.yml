@@ -1,4 +1,4 @@
-version: '3'
+#version: '3'
 
 services:
 
@@ -14,7 +14,8 @@ services:
       POSTGRES_DB: celeritas
     # manually chown 1000:1000 -R in host for ./db-data/postgres/
     # 1000 is app runner id
-    user: 1000:1000
+    # or 501 for mac
+    user: 501:501
     volumes:
       - ./db-data/postgres/:/var/lib/postgresql/data/
 
@@ -24,6 +25,7 @@ services:
     ports:
       - "6379:6379"
     restart: always
+    user: 501:501
     volumes:
       - ./db-data/redis/:/data
 
@@ -38,6 +40,5 @@ services:
       MYSQL_DATABASE: celeritas
       MYSQL_USER: mariadb
       MYSQL_PASSWORD: password
-
     volumes:
       - ./db-data/mariadb:/docker-entrypoint-initdb.d
