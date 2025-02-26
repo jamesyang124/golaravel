@@ -1,6 +1,6 @@
 module golaravel
 
-go 1.22
+go 1.23
 
 // local copy, instead of pulling from github.com
 // go get github.com/jamesyang124/celeritas to instruct builder get from local repo
