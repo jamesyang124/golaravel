@@ -4,7 +4,7 @@ go 1.22
 
 // local copy, instead of pulling from github.com
 // go get github.com/jamesyang124/celeritas to instruct builder get from local repo
-replace github.com/jamesyang124/celeritas => ../celeritas
+replace github.com/jamesyang124/celeritas => ./celeritas
 
 require (
 	github.com/CloudyKit/jet/v6 v6.2.0
